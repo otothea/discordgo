@@ -765,11 +765,12 @@ type identifyProperties struct {
 }
 
 type identifyData struct {
-	Token          string             `json:"token"`
-	Properties     identifyProperties `json:"properties"`
-	LargeThreshold int                `json:"large_threshold"`
-	Compress       bool               `json:"compress"`
-	Shard          *[2]int            `json:"shard,omitempty"`
+	Token              string             `json:"token"`
+	Properties         identifyProperties `json:"properties"`
+	LargeThreshold     int                `json:"large_threshold"`
+	Compress           bool               `json:"compress"`
+	Shard              *[2]int            `json:"shard,omitempty"`
+	GuildSubscriptions *bool              `json:"guild_subscriptions,omitempty"`
 }
 
 type identifyOp struct {
@@ -792,6 +793,7 @@ func (s *Session) identify() error {
 		250,
 		s.Compress,
 		nil,
+		s.GuildSubscriptions,
 	}
 
 	if s.ShardCount > 1 {

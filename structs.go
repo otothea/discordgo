@@ -45,6 +45,10 @@ type Session struct {
 	ShardID    int
 	ShardCount int
 
+	// Set this to false to disable presence and typing events
+	// default is true
+	GuildSubscriptions *bool
+
 	// Should state tracking be enabled.
 	// State tracking is the best way for getting the the users
 	// active guilds and the members of the guilds.
